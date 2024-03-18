@@ -3,6 +3,10 @@ kind: Deployment
 metadata:
   labels:
     {{- include "newrelic.common.labels" . | nindent 4 }}
+  annotations:
+  {{- if .Values.deploymentAnnotations }}
+    {{- toYaml .Values.deploymentAnnotations | nindent 4 }}
+  {{- end }}
   name: {{ include "newrelic.common.naming.fullname" . }}
   namespace: {{ .Release.Namespace }}
 spec:
@@ -12,8 +16,13 @@ spec:
       app: newrelic-infra-ohi
   template:
     metadata:
+      {{- if .Values.podAnnotations }}
+      annotations:
+        {{- toYaml .Values.podAnnotations | nindent 8}}
+      {{- end }}
       labels:
         app: newrelic-infra-ohi
+        {{- include "newrelic.common.labels.podLabels" . | nindent 8 }}
     spec:
       containers:
       - name: newrelic-infra
