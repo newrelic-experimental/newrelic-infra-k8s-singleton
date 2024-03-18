@@ -14,8 +14,9 @@
 ## Value
 
 |Metrics | Events | Logs | Traces | Visualization | Automation |
-|:-:|:x:|:-:|:-:|:-:|:-:|
+|:-:|:-:|:-:|:-:|:-:|:-:|
 |:-:|:white_check_mark:|:x:|:x:|:x:|:x:|
+
 
 ## Overview
 
