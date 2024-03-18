@@ -1,6 +1,6 @@
 apiVersion: v2
 name: newrelic-infra-k8s-singleton
-description: TBD
+description: Installs the New Relic Infrastructure agent as a Kubernetes singleton deployment
 
 # A chart can be either an 'application' or a 'library' chart.
 #
