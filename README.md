@@ -47,7 +47,7 @@ kubectl apply -f ./agent/. -n newrelic
 
 ### Helm
 
-Coming soon...
+See docs [here](./charts).
 
 ## Support
 
