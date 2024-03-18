@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  newrelic-infra-k8s-singleton:
+  - apiVersion: v2
+    appVersion: 3.2.24
+    created: "2024-03-18T14:53:55.26621-05:00"
+    description: A Helm chart for New Relic Infrastructure Agent containerized/singleton
+      pattern
+    digest: df626150e2cfb8c3b87a58a9dd2d44cc20ea54d09f33b8778504b126d1b23970
+    name: newrelic-infra-k8s-singleton
+    type: application
+    urls:
+    - https://newrelic-experimental.github.io/newrelic-infra-k8s-singleton/newrelic-infra-k8s-singleton-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-03-18T14:53:55.265423-05:00"
