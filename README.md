@@ -20,18 +20,20 @@
 
 ## Overview
 
-A New Relic Infrastructure deployment example for running [New Relic On-Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations/) in Kubernetes.  For most use cases, customers should use the [New Relic Kubernetes integration](https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/installation/kubernetes-integration-install-configure/) which runs as a Daemonset.  
+A New Relic Infrastructure deployment example for running [New Relic On-Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations/) in Kubernetes.  For Kubernetes performance and state metrics, and most other use cases, customers should use the [New Relic Kubernetes integration](https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/installation/kubernetes-integration-install-configure/). The New Relic Kubernetes integration is configured to run the New Relic Infrastructure agent as a [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).  
 
 ## When to use
 
 This Singleton should be used instead of the [New Relic Kubernetes Integration](https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/installation/kubernetes-integration-install-configure/) when:
 
 - The On-Host Integration **does not** need to run on every Kubernetes worker node
-- The On-Host Integration is connecting to an endpoint outside of the cluster (e.g. a database)
+- The On-Host Integration is connecting to an endpoint outside of the cluster (e.g. an RDS database)
 
 ## Installation
 
-Create a secret containing your New Relic license (ingest) key.
+### kubectl
+
+Create a secret containing your New Relic license (ingest) key and store it in the same namespace where your deployment will be running.
 
 ```
 kubectl create secret generic newrelic-license-key --from-literal=license-key=<NR LICENSE KEY HERE> -n newrelic
@@ -42,6 +44,10 @@ After creating your secret, update the `configmap.yaml` and deploy the agent.
 ```
 kubectl apply -f ./agent/. -n newrelic
 ```
+
+### Helm
+
+Coming soon...
 
 ## Support
 

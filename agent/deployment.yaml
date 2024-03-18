@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newrelic-infra-ohi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: newrelic-infra-ohi
+  template:
+    metadata:
+      labels:
+        app: newrelic-infra-ohi
+    spec:
+      containers:
+      - name: newrelic-infra
+        image: newrelic/infrastructure-bundle:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/newrelic-infra/integrations.d
+        env:
+        - name: NRIA_IS_FORWARD_ONLY
+          value: "true"
+        - name: NRIA_LOG_LEVEL
+          value: "info"
+        - name: NRIA_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: newrelic-license-key
+              key: license-key
+      volumes:
+      - name: config-volume
+        configMap:
+          name: infra-configmap
