@@ -1,11 +1,25 @@
-# Install
+## Usage
 
-Checkout repo, change directories to chart:
+[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
 
-```
-git clone git@github.com:newrelic-infra-k8s-singleton/newrelic-infra-k8s-singleton.git
-cd newrelic-infra-k8s-singleton/charts
-```
+Once Helm has been set up correctly, add the repo as follows:
+
+  helm repo add nri-k8s-singleton https://newrelic-experimental.github.io/newrelic-infra-k8s-singleton
+
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages.  You can then run `helm search repo
+nri-k8s-singleton` to see the charts.
+
+To install the newrelic-infra-k8s-singleton chart:
+
+    helm install my-newrelic-infra-k8s-singleton nri-k8s-singleton/newrelic-infra-k8s-singleton
+
+To uninstall the chart:
+
+    helm delete my-newrelic-infra-k8s-singleton
+
+## Customization
 
 Customize the integration configuration as needed in templates/configmap.yaml. Use regular Linux OHI examples for this, not Kubernetes OHI examples. Here is an example of the correct type: [mysql-config.yml.sample](https://github.com/newrelic/nri-mysql/blob/master/mysql-config.yml.sample)
 
