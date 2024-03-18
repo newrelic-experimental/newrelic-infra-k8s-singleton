@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    {{- include "newrelic.common.labels" . | nindent 4 }}
+  name: {{ include "newrelic.common.naming.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: newrelic-infra-ohi
+  template:
+    metadata:
+      labels:
+        app: newrelic-infra-ohi
+    spec:
+      containers:
+      - name: newrelic-infra
+        image: newrelic/infrastructure-bundle:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/newrelic-infra/integrations.d
+        env:
+        - name: NRIA_IS_FORWARD_ONLY
+          value: "true"
+        # - name: NRIA_IS_SECURE_FORWARD_ONLY
+        #   value: "true"
+        - name: NRIA_LOG_LEVEL
+          value: "info"
+        - name: "NRIA_OVERRIDE_HOSTNAME_SHORT"
+          valueFrom:
+            fieldRef:
+              apiVersion: "v1"
+              fieldPath: "spec.nodeName"
+        - name: "NRIA_OVERRIDE_HOSTNAME"
+          valueFrom:
+            fieldRef:
+              apiVersion: "v1"
+              fieldPath: "spec.nodeName"
+        - name: NRIA_CUSTOM_ATTRIBUTES
+          value: {{ .Values.clusternamehack | squote }}
+        - name: NRIA_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: newrelic-license-key
+              key: license-key
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ include "newrelic.common.naming.fullname" . }}
