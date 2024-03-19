@@ -36,7 +36,7 @@ low data modes or any other quirk that it could have.
 | affinity | object | `{}` |  |
 | cluster | string | `""` |  |
 | clusternamehack | string | `"{\"clusterName\": \"\"}"` |  |
-| config."nri-flex.yaml" | string | `"integrations:\n- name: nri-flex\n  # interval: 30s\n  config:\n    name: pingFlex\n    apis:\n      - name: ping\n        commands:\n          - name: google\n            run: ping -c 5 google.com || true\n            split_output: statistics ---\n            regex_matches:\n              - expression: ([0-9]+\\.?[0-9]+)\\/([0-9]+\\.?[0-9]+)\\/([0-9]+\\.?[0-9]+)\n                keys: [min, avg, max]\n                ### there are two different variants for the packet statistics returned, below allows support for both\n              - expression: (\\d+) packets transmitted, (\\d+) packets received, (\\S+)% packet loss\n                keys: [packetsTransmitted, packetsReceived, packetLoss]\n              - expression: (\\d+) packets transmitted, (\\d+) received, (\\d+)% packet loss, time (\\d+)\n                keys:\n                  [packetsTransmitted, packetsReceived, packetLoss, timeMs]\n        custom_attributes:\n          url: google.com\n"` |  |
+| config."nri-flex.yaml" | string | `""` |  |
 | containerSecurityContext | object | `{}` |  |
 | customSecretLicenseKey | string | `""` |  |
 | customSecretName | string | `""` |  |
