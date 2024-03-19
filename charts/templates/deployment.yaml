@@ -52,8 +52,8 @@ spec:
         - name: NRIA_LICENSE_KEY
           valueFrom:
             secretKeyRef:
-              name: newrelic-license-key
-              key: license-key
+              name: {{ printf "%s-%s-license" .Release.Name .Chart.Name | quote }}
+              key: licenseKey
       volumes:
       - name: config-volume
         configMap:
