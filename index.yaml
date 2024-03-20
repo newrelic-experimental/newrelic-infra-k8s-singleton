@@ -3,6 +3,31 @@ entries:
   newrelic-infra-k8s-singleton:
   - apiVersion: v2
     appVersion: 3.2.24
+    created: "2024-03-20T15:06:16.590203106Z"
+    dependencies:
+    - name: common-library
+      repository: https://helm-charts.newrelic.com
+      version: 1.1.1
+    description: Installs the New Relic Infrastructure agent as a Kubernetes singleton
+      deployment
+    digest: d0ad9abd5a51285a782bcd43280fde5d36eff5f58540e653a17c66f3f382d57e
+    keywords:
+    - newrelic
+    - chart-library
+    - kubernetes
+    - infrastructure
+    maintainers:
+    - name: Max Lemieux
+      url: https://github.com/maxlemieux
+    - name: Brad Schmitt
+      url: https://github.com/bpschmitt
+    name: newrelic-infra-k8s-singleton
+    type: application
+    urls:
+    - https://github.com/newrelic-experimental/newrelic-infra-k8s-singleton/releases/download/newrelic-infra-k8s-singleton-1.1.3/newrelic-infra-k8s-singleton-1.1.3.tgz
+    version: 1.1.3
+  - apiVersion: v2
+    appVersion: 3.2.24
     created: "2024-03-18T16:31:01.37155-05:00"
     dependencies:
     - name: common-library
@@ -26,4 +51,4 @@ entries:
     urls:
     - https://newrelic-experimental.github.io/newrelic-infra-k8s-singleton/newrelic-infra-k8s-singleton-1.1.2.tgz
     version: 1.1.2
-generated: "2024-03-18T16:31:01.36958-05:00"
+generated: "2024-03-20T15:06:16.590292388Z"
