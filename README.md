@@ -47,7 +47,7 @@ kubectl apply -f ./agent/. -n newrelic
 
 ### Helm
 
-See docs [here](./charts).
+See docs [here](./charts/newrelic-infra-k8s-singleton).
 
 ## Support
 
